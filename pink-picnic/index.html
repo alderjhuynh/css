@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pink Picnic UI Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <header class="panel">
+    <div>
+      <h1>Pink Picnic</h1>
+      </div>
+  </header>
+
+  <div class="grid">
+
+    <section class="panel" id="overlay">
+      <div class="frame" id="frame">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <g id="shapes"><!-- there is intentionally nothing here --></g>
+            <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <rect width="3" height="7" fill="var(--pink)" opacity=".75"/>
+            </pattern>
+            <clipPath id="clip"><use href="#shapes"/></clipPath>
+          </defs>
+          <use href="#shapes" fill="none" stroke="var(--pink)" stroke-width="30" stroke-linejoin="round"/>
+          <use href="#shapes" fill="none" stroke="#fff" stroke-width="16" stroke-linejoin="round"/>
+          <use href="#shapes" fill="var(--cream)" stroke="var(--cream)" stroke-width="6"/>
+          <g clip-path="url(#clip)"><rect x="0" y="290" width="400" height="220" fill="url(#hatch)"/></g>
+        </svg>
+        <div class="hearts" id="hearts"></div>
+      </div>
+      <div>
+        <h2>Overlay frame</h2>
+        </div>
+      <label class="field">Stripe angle
+        <input type="range" id="angle" min="-90" max="90" value="-45">
+      </label>
+      <div class="row">
+        <button class="btn" id="add">Add heart</button>
+        <button class="btn alt" id="clear">Clear</button>
+      </div>
+    </section>
+
+    <div style="display:grid;gap:22px">
+
+      <section class="panel">
+        <h2>Buttons</h2>
+        <div class="row">
+          <button class="btn">Save</button>
+          <button class="btn alt">Cancel</button>
+        </div>
+        <div class="row">
+          <button class="btn sm">Small</button>
+          <button class="btn sm alt">Small</button>
+          <button class="btn icon" aria-label="Favorite"><i class="ic-heart"></i></button>
+          <button class="btn" disabled>Disabled</button>
+        </div>
+        <div class="row">
+          <button class="btn alt like" aria-pressed="false"><i class="ic-heart"></i><span class="count">24</span></button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Switches</h2>
+        <label class="switch">Sparkle effects <input type="checkbox" checked></label>
+        <label class="switch">Show stripes <input type="checkbox"></label>
+      </section>
+
+      <section class="panel">
+        <h2>Chips</h2>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" checked><span>Cute</span></label>
+          <label class="chip"><input type="checkbox"><span>Soft</span></label>
+          <label class="chip"><input type="checkbox"><span>Retro</span></label>
+          <label class="chip"><input type="checkbox" checked><span>Y2K</span></label>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="panel">
+      <h2>Text field</h2>
+      <label class="field">Your name
+        <input type="text" placeholder="Type something sweet">
+      </label>
+      <div class="note"><i class="ic-heart"></i>Names show on your overlay.</div>
+    </section>
+
+    <section class="panel">
+      <h2>Progress</h2>
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40" id="bar"><i></i></div>
+      <label class="field">Drag to change
+        <input type="range" id="prog" min="0" max="100" value="40">
+      </label>
+    </section>
+
+    <section class="panel" id="tabs">
+      <h2>Tabs</h2>
+      <div class="tablist" role="tablist">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="t1" id="tb1">Stickers</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="t2" id="tb2">Frames</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="t3" id="tb3">Text</button>
+      </div>
+      <p class="tabpanel" role="tabpanel" id="t1" aria-labelledby="tb1">Peel-and-stick hearts, stars, and bows.</p>
+      <p class="tabpanel" role="tabpanel" id="t2" aria-labelledby="tb2" hidden>Striped borders in any angle.</p>
+      <p class="tabpanel" role="tabpanel" id="t3" aria-labelledby="tb3" hidden>Rounded gothic captions.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Rating</h2>
+      <div class="rate" role="radiogroup" aria-label="Rating" id="rate">
+        <button role="radio" aria-checked="false" aria-label="1 heart"><i class="ic-heart"></i></button>
+        <button role="radio" aria-checked="false" aria-label="2 hearts"><i class="ic-heart"></i></button>
+        <button role="radio" aria-checked="false" aria-label="3 hearts"><i class="ic-heart"></i></button>
+        <button role="radio" aria-checked="false" aria-label="4 hearts"><i class="ic-heart"></i></button>
+        <button role="radio" aria-checked="false" aria-label="5 hearts"><i class="ic-heart"></i></button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Accordion</h2>
+      <details class="acc" open><summary>How do I save it?</summary><div>Tap Save and it lands in your camera roll.</div></details>
+      <details class="acc"><summary>Can I change the colors?</summary><div>Edit the tokens at the top of styles.css.</div></details>
+    </section>
+
+    <section class="panel">
+      <h2>Stickers &amp; avatars</h2>
+      <div class="stickers">
+        <span class="sticker">new!</span>
+        <span class="sticker b">best friend</span>
+        <div class="avatars"><span class="avatar">M</span><span class="avatar">K</span><span class="avatar">+3</span></div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+const hearts=$('#hearts'),frame=$('#frame');
+const svg='<svg viewBox="0 0 44 40"><path d="M22 38C6 26 1 18 1 11 1 5 6 1 11 1c5 0 9 3 11 7 2-4 6-7 11-7 5 0 10 4 10 10 0 7-5 15-21 27z" fill="#fff"/></svg>';
+function add(x,y,s){const h=document.createElement('div');h.className='heart';
+ h.style.left=(x??8+Math.random()*70)+'%';h.style.top=(y??20+Math.random()*60)+'%';
+ h.style.transform='rotate('+(Math.random()*40-20)+'deg) scale('+(s??.7+Math.random()*.7)+')';
+ h.innerHTML=svg;hearts.appendChild(h)}
+add(12,38,1.2);add(24,52,.8);
+$('#add').onclick=()=>add();
+$('#clear').onclick=()=>hearts.innerHTML='';
+$('#angle').oninput=e=>document.documentElement.style.setProperty('--angle',e.target.value+'deg');
+frame.addEventListener('click',e=>{const r=frame.getBoundingClientRect();add((e.clientX-r.left)/r.width*100-5,(e.clientY-r.top)/r.height*100-4)});
+
+$$('.like').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true',c=b.querySelector('.count');
+ b.setAttribute('aria-pressed',on);c.textContent=+c.textContent+(on?1:-1)});
+
+$('#prog').oninput=e=>{$('#bar').style.setProperty('--v',e.target.value+'%');$('#bar').setAttribute('aria-valuenow',e.target.value)};
+$('#bar').style.setProperty('--v','40%');
+
+$$('#tabs .tab').forEach(t=>t.onclick=()=>{
+ $$('#tabs .tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+ $$('#tabs .tabpanel').forEach(p=>p.hidden=p.id!==t.getAttribute('aria-controls'))});
+
+const stars=$$('#rate button');
+stars.forEach((b,i)=>b.onclick=()=>stars.forEach((x,j)=>{x.classList.toggle('on',j<=i);x.setAttribute('aria-checked',j===i)}));
+</script>
+</body>
+</html>

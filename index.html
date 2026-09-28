@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="pico">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UI Kits</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--heart:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 40'%3E%3Cpath d='M22 38C6 26 1 18 1 11 1 5 6 1 11 1c5 0 9 3 11 7 2-4 6-7 11-7 5 0 10 4 10 10 0 7-5 15-21 27z'/%3E%3C/svg%3E");
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html[data-skin=neu]{--n:#e4e8ef;--sd:#b9bec9;--sl:#fff;--ink:#4b5568;--ac:#7c8cff;--dp:#5163e6;--bg:var(--n)}
+html[data-skin=pico]{--pink:#f38ab8;--lt:#f9c2da;--pbg:#fbd6e6;--cream:#fdeedd;--ink:#7a2650;--card:#fff;--dp:var(--ink);
+ --bg:repeating-linear-gradient(-45deg,var(--pbg) 0 38px,var(--lt) 38px 76px) var(--pbg)}
+@media (prefers-color-scheme:dark){
+ html[data-skin=neu]:not([data-theme=light]){--n:#2a2f3a;--sd:#1c2029;--sl:#383f4d;--ink:#cdd4e6;--ac:#8f9cff;--dp:#6f7ff0}
+ html[data-skin=pico]:not([data-theme=light]){--pink:#d0629a;--lt:#8e3d68;--pbg:#4a1c39;--cream:#f6e2d0;--ink:#ffd3e6;--card:#2b1022}}
+html[data-theme=dark][data-skin=neu]{--n:#2a2f3a;--sd:#1c2029;--sl:#383f4d;--ink:#cdd4e6;--ac:#8f9cff;--dp:#6f7ff0}
+html[data-theme=dark][data-skin=pico]{--pink:#d0629a;--lt:#8e3d68;--pbg:#4a1c39;--cream:#f6e2d0;--ink:#ffd3e6;--card:#2b1022}
+
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font:500 1rem/1.6 "Zen Maru Gothic","Hiragino Maru Gothic ProN",system-ui,sans-serif}
+:focus-visible{outline:3px solid var(--dp);outline-offset:4px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px 40px}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 20px;padding:22px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.3rem;color:inherit;text-decoration:none}
+.brand .ic{color:var(--pink,var(--ac))}
+.top nav{display:flex;gap:6px}
+.top nav a{color:inherit;font-weight:700;text-decoration:none;padding:6px 12px;border-radius:99px}
+.top nav a:hover{text-decoration:underline;text-underline-offset:5px}
+h1{margin:0 0 18px;font-weight:900;font-size:clamp(2.4rem,6.5vw,4.3rem);line-height:1.06;max-width:13ch}
+h2{margin:0 0 20px;font-weight:900;font-size:1.7rem;line-height:1.2}
+h3{margin:0;font-weight:900;font-size:1.1rem}
+p{margin:0}
+.lede{font-size:1.15rem;max-width:32em;margin-bottom:26px}
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:44px;align-items:center;padding:20px 0 56px}
+section.blk{padding:20px 0 44px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:28px;align-items:start}
+.row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.panel{padding:22px;display:grid;gap:16px;align-content:start}
+.sub{margin:-8px 0 20px;max-width:36em}
+
+.ic{display:inline-block;width:1.3em;aspect-ratio:44/40;background:currentColor;-webkit-mask:var(--heart) center/contain no-repeat;mask:var(--heart) center/contain no-repeat}
+.btn{font:inherit;font-weight:700;color:inherit;border:0;padding:13px 24px;cursor:pointer;text-decoration:none;display:inline-block;text-align:center;transition:box-shadow .15s,transform .1s,color .15s}
+.like{display:inline-flex;align-items:center;gap:10px}
+.like .ic{transition:transform .2s cubic-bezier(.3,1.6,.5,1)}
+.like[aria-pressed=true] .ic{transform:scale(1.2)}
+.sw{display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:700;cursor:pointer}
+.sw input{appearance:none;-webkit-appearance:none;margin:0;width:56px;height:30px;border-radius:99px;position:relative;cursor:pointer}
+.sw input::after{content:"";position:absolute;border-radius:50%;transition:transform .2s cubic-bezier(.3,1.4,.5,1),background .2s}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span,.pill{display:block;padding:6px 18px;border-radius:99px;font-weight:700;font-size:.9rem}
+.chip input:focus-visible+span{outline:3px solid var(--dp);outline-offset:4px}
+.pills{display:flex;flex-wrap:wrap;gap:14px;list-style:none;margin:0;padding:6px}
+.bar{height:22px;border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:var(--v,60%);border-radius:99px;transition:width .25s}
+.field{display:grid;gap:8px;font-weight:700;font-size:.9rem}
+input[type=range]{width:100%;accent-color:var(--pink,var(--dp))}
+pre{margin:0;padding:14px 16px;overflow-x:auto;font:500 .85rem/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;border-radius:14px}
+footer{padding-top:24px;font-size:.9rem}
+
+html[data-skin=neu] .panel{background:var(--n);border-radius:24px;box-shadow:6px 6px 14px var(--sd),-6px -6px 14px var(--sl)}
+html[data-skin=neu] .btn{background:var(--n);border-radius:16px;box-shadow:6px 6px 14px var(--sd),-6px -6px 14px var(--sl)}
+html[data-skin=neu] .btn:active,html[data-skin=neu] .btn[aria-checked=true],html[data-skin=neu] .btn[aria-pressed=true]{box-shadow:inset 5px 5px 10px var(--sd),inset -5px -5px 10px var(--sl)}
+html[data-skin=neu] .btn[aria-checked=true],html[data-skin=neu] .btn[aria-pressed=true]{color:var(--dp)}
+html[data-skin=neu] .btn.main{background:var(--dp);color:#fff}
+html[data-skin=neu] .like .ic{opacity:.4}
+html[data-skin=neu] .like[aria-pressed=true] .ic{opacity:1}
+html[data-skin=neu] .sw input{background:var(--n);box-shadow:inset 3px 3px 6px var(--sd),inset -3px -3px 6px var(--sl)}
+html[data-skin=neu] .sw input::after{top:4px;left:4px;width:22px;height:22px;background:var(--n);box-shadow:2px 2px 4px var(--sd),-2px -2px 4px var(--sl)}
+html[data-skin=neu] .sw input:checked::after{transform:translateX(26px);background:var(--ac)}
+html[data-skin=neu] .chip span,html[data-skin=neu] .pill{background:var(--n);box-shadow:3px 3px 7px var(--sd),-3px -3px 7px var(--sl)}
+html[data-skin=neu] .chip input:checked+span{box-shadow:inset 3px 3px 6px var(--sd),inset -3px -3px 6px var(--sl);color:var(--dp)}
+html[data-skin=neu] .bar{height:18px;padding:3px;background:var(--n);box-shadow:inset 4px 4px 8px var(--sd),inset -4px -4px 8px var(--sl)}
+html[data-skin=neu] .bar i{background:var(--ac)}
+html[data-skin=neu] pre{box-shadow:inset 3px 3px 6px var(--sd),inset -3px -3px 6px var(--sl)}
+
+html[data-skin=pico] .panel{background:var(--card);border:3px solid var(--pink);border-radius:18px;box-shadow:0 6px 0 var(--pink)}
+html[data-skin=pico] .btn{background:var(--pink);color:#fff;border-radius:999px;box-shadow:0 4px 0 var(--ink)}
+html[data-skin=pico] .btn.alt{background:var(--card);color:var(--ink);border:3px solid var(--pink);box-shadow:0 4px 0 var(--pink);padding:10px 21px}
+html[data-skin=pico] .btn.alt[aria-checked=true]{background:var(--pink);color:#fff}
+html[data-skin=pico] .btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+html[data-skin=pico] .btn.alt:active{box-shadow:0 1px 0 var(--pink)}
+html[data-skin=pico] .like .ic{color:var(--lt)}
+html[data-skin=pico] .like[aria-pressed=true] .ic{color:var(--pink)}
+html[data-skin=pico] .sw input{height:32px;border:3px solid var(--pink);background:var(--card);box-shadow:0 3px 0 var(--pink)}
+html[data-skin=pico] .sw input::after{top:3px;left:3px;width:20px;height:20px;background:var(--pink)}
+html[data-skin=pico] .sw input:checked{background:var(--pink)}
+html[data-skin=pico] .sw input:checked::after{transform:translateX(24px);background:#fff}
+html[data-skin=pico] .chip span,html[data-skin=pico] .pill{border:3px solid var(--pink);background:var(--card)}
+html[data-skin=pico] .chip input:checked+span{background:var(--pink);color:#fff}
+html[data-skin=pico] .bar{border:3px solid var(--pink);background:var(--card)}
+html[data-skin=pico] .bar i{background:repeating-linear-gradient(-45deg,var(--pink) 0 10px,var(--lt) 10px 20px)}
+html[data-skin=pico] pre{background:var(--pbg);border:3px dashed var(--pink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#">Auraea</a>
+    <nav aria-label="Main"><a href="pink-picnic/">Pink Picnic</a><a href="neumorphic/">Neumorphic</a></nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Because I do it <em>better</em> than AI.</h1>
+      <p class="lede">I'll be putting my UI work here when I come up with some other stuff :)</p>
+      <div class="row">
+        <a class="btn main" href="#use">See how it works</a>
+        <a class="btn alt" href="#inside">Browse components</a>
+      </div>
+    </div>
+
+    <div class="panel" aria-labelledby="try">
+      <h3 id="try">Try it:</h3>
+      <div class="row" id="pick" role="radiogroup" aria-label="Skin">
+        <button class="btn alt" role="radio" aria-checked="true" data-skin="pico">Pink Picnic</button>
+        <button class="btn alt" role="radio" aria-checked="false" data-skin="neu">Neumorphic</button>
+      </div>
+      <div class="row">
+        <button class="btn main">Save</button>
+        <button class="btn alt">Cancel</button>
+        <button class="btn alt like" aria-pressed="false"><i class="ic"></i><span id="n">24</span></button>
+      </div>
+      <label class="sw">Notifications <input type="checkbox" checked></label>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" checked><span>Soft</span></label>
+        <label class="chip"><input type="checkbox"><span>Round</span></label>
+        <label class="chip"><input type="checkbox" checked><span>Calm</span></label>
+      </div>
+      <div class="bar" id="bar" role="progressbar" aria-label="Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"><i></i></div>
+      <label class="field">Drag to change progress <input type="range" id="prog" min="0" max="100" value="60"></label>
+    </div>
+  </div>
+
+  <section class="blk" id="skins">
+    <h2>See all of the styles:</h2>
+    <div class="cols">
+      <div class="panel">
+        <h3>Pink Picnic</h3>
+        <p>Candy stripes, chunky outlines and sticker-style badges. Very cutesy.</p>
+        <div class="row"><button class="btn alt" data-skin="pico">Preview this skin</button></div>
+      </div>
+      <div class="panel">
+        <h3>Neumorphic</h3>
+        <p>One soft grey surface. Sleek and looks 3d. UI elements look like they've been carved out of the page.</p>
+        <div class="row"><button class="btn alt" data-skin="neu">Preview this skin</button></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Auraea's UI Kit</footer>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+function skin(k){document.documentElement.dataset.skin=k;$$('#pick [role=radio]').forEach(b=>b.setAttribute('aria-checked',b.dataset.skin===k))}
+$$('button[data-skin]').forEach(b=>b.onclick=()=>skin(b.dataset.skin));
+$('.like').onclick=e=>{const b=e.currentTarget,on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);$('#n').textContent=+$('#n').textContent+(on?1:-1)};
+$('#prog').oninput=e=>{$('#bar').style.setProperty('--v',e.target.value+'%');$('#bar').setAttribute('aria-valuenow',e.target.value)};
+$('#bar').style.setProperty('--v','60%');
+</script>
+</body>
+</html>

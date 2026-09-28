@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Neumorphic UI Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <header class="panel">
+    <div>
+      <h1>Neumorphic</h1>
+      </div>
+  </header>
+
+  <div class="grid">
+
+    <section class="panel">
+      <h2>Buttons</h2>
+      <div class="row">
+        <button class="btn">Raised</button>
+        <button class="btn on" aria-pressed="true" id="toggle">Pressed</button>
+      </div>
+      <div class="row">
+        <button class="btn primary">Save</button>
+        <button class="btn sm">Small</button>
+        <button class="btn icon" aria-label="Favorite"><i class="ic-heart"></i></button>
+        <button class="btn" disabled>Disabled</button>
+      </div>
+      <div class="row">
+        <button class="btn like" aria-pressed="false"><i class="ic-heart"></i><span class="count">24</span></button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Switches</h2>
+      <label class="switch">Notifications <input type="checkbox" checked></label>
+      <label class="switch">Auto-save <input type="checkbox"></label>
+    </section>
+
+    <section class="panel">
+      <h2>Chips</h2>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" checked><span>Soft</span></label>
+        <label class="chip"><input type="checkbox"><span>Matte</span></label>
+        <label class="chip"><input type="checkbox"><span>Minimal</span></label>
+        <label class="chip"><input type="checkbox" checked><span>Calm</span></label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Text field</h2>
+      <label class="field">Your name
+        <input type="text" placeholder="Type your name">
+      </label>
+      <div class="note"><i class="ic-heart"></i>Shown on your profile.</div>
+    </section>
+
+    <section class="panel">
+      <h2>Progress</h2>
+      <div class="well" role="progressbar" aria-label="Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65" id="bar"><i></i></div>
+      <label class="field">Drag to change
+        <input type="range" id="prog" min="0" max="100" value="65">
+      </label>
+    </section>
+
+    <section class="panel" id="tabs">
+      <h2>Tabs</h2>
+      <div class="tablist" role="tablist">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="t1" id="tb1">Buttons</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="t2" id="tb2">Inputs</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="t3" id="tb3">Cards</button>
+      </div>
+      <p class="tabpanel" role="tabpanel" id="t1" aria-labelledby="tb1">Raised at rest, pressed on tap.</p>
+      <p class="tabpanel" role="tabpanel" id="t2" aria-labelledby="tb2" hidden>Inset fields that look carved in.</p>
+      <p class="tabpanel" role="tabpanel" id="t3" aria-labelledby="tb3" hidden>Panels that float above the page.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Rating</h2>
+      <div class="rate" role="radiogroup" aria-label="Rating" id="rate">
+        <button role="radio" aria-checked="false" aria-label="1 heart"><i class="ic-heart"></i></button>
+        <button role="radio" aria-checked="false" aria-label="2 hearts"><i class="ic-heart"></i></button>
+        <button role="radio" aria-checked="false" aria-label="3 hearts"><i class="ic-heart"></i></button>
+        <button role="radio" aria-checked="false" aria-label="4 hearts"><i class="ic-heart"></i></button>
+        <button role="radio" aria-checked="false" aria-label="5 hearts"><i class="ic-heart"></i></button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Accordion</h2>
+      <details class="acc" open><summary>How do I change the color?</summary><div>Edit --n, --sd and --sl at the top of styles.css.</div></details>
+      <details class="acc"><summary>Does it support dark mode?</summary><div>Yes, it follows your system setting.</div></details>
+    </section>
+
+    <section class="panel">
+      <h2>Badges &amp; avatars</h2>
+      <div class="badges">
+        <span class="badge">new</span>
+        <span class="badge b">selected</span>
+        <div class="avatars"><span class="avatar">M</span><span class="avatar">K</span><span class="avatar">+3</span></div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+$('#toggle').onclick=e=>{const b=e.currentTarget,on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);b.classList.toggle('on',on)};
+
+$$('.like').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true',c=b.querySelector('.count');
+ b.setAttribute('aria-pressed',on);c.textContent=+c.textContent+(on?1:-1)});
+
+$('#prog').oninput=e=>{$('#bar').style.setProperty('--v',e.target.value+'%');$('#bar').setAttribute('aria-valuenow',e.target.value)};
+$('#bar').style.setProperty('--v','65%');
+
+$$('#tabs .tab').forEach(t=>t.onclick=()=>{
+ $$('#tabs .tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+ $$('#tabs .tabpanel').forEach(p=>p.hidden=p.id!==t.getAttribute('aria-controls'))});
+
+const stars=$$('#rate button');
+stars.forEach((b,i)=>b.onclick=()=>stars.forEach((x,j)=>{x.classList.toggle('on',j<=i);x.setAttribute('aria-checked',j===i)}));
+</script>
+</body>
+</html>
