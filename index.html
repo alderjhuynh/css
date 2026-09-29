@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>UI Kits</title>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Sniglet:wght@800&family=Patrick+Hand&display=swap" rel="stylesheet">
 <style>
 :root{--heart:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 40'%3E%3Cpath d='M22 38C6 26 1 18 1 11 1 5 6 1 11 1c5 0 9 3 11 7 2-4 6-7 11-7 5 0 10 4 10 10 0 7-5 15-21 27z'/%3E%3C/svg%3E");
  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -95,13 +95,42 @@ html[data-skin=pico] .chip input:checked+span{background:var(--pink);color:#fff}
 html[data-skin=pico] .bar{border:3px solid var(--pink);background:var(--card)}
 html[data-skin=pico] .bar i{background:repeating-linear-gradient(-45deg,var(--pink) 0 10px,var(--lt) 10px 20px)}
 html[data-skin=pico] pre{background:var(--pbg);border:3px dashed var(--pink)}
+
+html[data-skin=doodle]{--ink:#835b54;--dp:#6a4640;--paper:#fffdfa;--chalk:#f7f1ec;--wash:#f4eae6;--ac:#835b54;--bg:var(--paper);--wob:26px 20px 28px 22px/22px 28px 20px 26px;
+ --cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M5 3v21l6-5.5 4.5 9.5 4.5-2-4.5-9.5 8-.5z' fill='white' stroke='%23835b54' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E") 5 3,pointer}
+@media (prefers-color-scheme:dark){html[data-skin=doodle]:not([data-theme=light]){--ink:#d3ada4;--dp:#f0d2c9;--paper:#241c1b;--chalk:#241c1b;--wash:#33282a}}
+html[data-theme=dark][data-skin=doodle]{--ink:#d3ada4;--dp:#f0d2c9;--paper:#241c1b;--chalk:#241c1b;--wash:#33282a}
+html[data-skin=doodle] body{font:400 1.15rem/1.5 "Patrick Hand","Comic Sans MS",system-ui,sans-serif}
+html[data-skin=doodle] :is(h1,h2,h3,.brand){font-family:Sniglet,"Zen Maru Gothic",system-ui,sans-serif;font-weight:800}
+html[data-skin=doodle] :is(.btn,.sw,.field,.chip span,.pill,.top nav a){font-weight:400}
+html[data-skin=doodle] :is(a,button,label,input[type=range]){cursor:var(--cursor)}
+html[data-skin=doodle] :is(.panel,.btn,.chip span,.pill,.bar){position:relative;isolation:isolate}
+html[data-skin=doodle] :is(.panel,.btn,.chip span,.pill,.bar)::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:var(--wob);background:var(--fill,var(--paper));box-shadow:inset 0 0 0 3px var(--ink);filter:url(#rough);pointer-events:none;transition:transform .1s}
+html[data-skin=doodle] .btn{--fill:var(--ink);color:var(--chalk);background:none;font-size:1.15rem;letter-spacing:.09em;text-transform:uppercase}
+html[data-skin=doodle] .btn.alt{--fill:var(--paper);color:var(--ink);letter-spacing:.02em;text-transform:none;padding:13px 24px}
+html[data-skin=doodle] .btn.alt[aria-checked=true]{--fill:var(--ink);color:var(--chalk)}
+html[data-skin=doodle] .btn:hover::before{transform:rotate(-.8deg) scale(1.02)}
+html[data-skin=doodle] .btn:active{transform:translateY(2px)}
+html[data-skin=doodle] .btn:active::before{transform:scale(.98)}
+html[data-skin=doodle] .like .ic{opacity:.35}
+html[data-skin=doodle] .like[aria-pressed=true] .ic{opacity:1}
+html[data-skin=doodle] .sw input{width:60px;height:32px;border:3px solid var(--ink);border-radius:var(--wob);background:var(--paper)}
+html[data-skin=doodle] .sw input::after{top:3px;left:3px;width:20px;height:20px;background:var(--ink)}
+html[data-skin=doodle] .sw input:checked{background:var(--ink)}
+html[data-skin=doodle] .sw input:checked::after{transform:translateX(28px);background:var(--chalk)}
+html[data-skin=doodle] .chip span,html[data-skin=doodle] .pill{padding:5px 18px}
+html[data-skin=doodle] .chip input:checked+span{--fill:var(--ink);color:var(--chalk)}
+html[data-skin=doodle] .bar{height:26px;padding:5px;overflow:visible}
+html[data-skin=doodle] .bar i{background:var(--ink);border-radius:var(--wob);filter:url(#rough)}
+html[data-skin=doodle] pre{background:var(--wash);border:3px solid var(--ink);border-radius:var(--wob)}
 </style>
 </head>
 <body>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><filter id="rough" x="-8%" y="-30%" width="116%" height="160%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="7" result="a"/><feDisplacementMap in="SourceGraphic" in2="a" scale="6" xChannelSelector="R" yChannelSelector="G" result="b"/><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="3" result="c"/><feDisplacementMap in="b" in2="c" scale="2.5" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <div class="wrap">
   <header class="top">
     <a class="brand" href="#">Auraea</a>
-    <nav aria-label="Main"><a href="pink-picnic/">Pink Picnic</a><a href="neumorphic/">Neumorphic</a></nav>
+    <nav aria-label="Main"><a href="pink-picnic/">Pink Picnic</a><a href="neumorphic/">Neumorphic</a><a href="doodle/">Doodle</a></nav>
   </header>
 
   <div class="hero">
@@ -109,8 +138,6 @@ html[data-skin=pico] pre{background:var(--pbg);border:3px dashed var(--pink)}
       <h1>Because I do it <em>better</em> than AI.</h1>
       <p class="lede">I'll be putting my UI work here when I come up with some other stuff :)</p>
       <div class="row">
-        <a class="btn main" href="#use">See how it works</a>
-        <a class="btn alt" href="#inside">Browse components</a>
       </div>
     </div>
 
@@ -119,6 +146,7 @@ html[data-skin=pico] pre{background:var(--pbg);border:3px dashed var(--pink)}
       <div class="row" id="pick" role="radiogroup" aria-label="Skin">
         <button class="btn alt" role="radio" aria-checked="true" data-skin="pico">Pink Picnic</button>
         <button class="btn alt" role="radio" aria-checked="false" data-skin="neu">Neumorphic</button>
+        <button class="btn alt" role="radio" aria-checked="false" data-skin="doodle">Doodle</button>
       </div>
       <div class="row">
         <button class="btn main">Save</button>
@@ -148,6 +176,11 @@ html[data-skin=pico] pre{background:var(--pbg);border:3px dashed var(--pink)}
         <h3>Neumorphic</h3>
         <p>One soft grey surface. Sleek and looks 3d. UI elements look like they've been carved out of the page.</p>
         <div class="row"><button class="btn alt" data-skin="neu">Preview this skin</button></div>
+      </div>
+      <div class="panel">
+        <h3>Doodle</h3>
+        <p>Ink on white paper. Wobbly outlines, chalky fills, and a hand-drawn cursor.</p>
+        <div class="row"><button class="btn alt" data-skin="doodle">Preview this skin</button></div>
       </div>
     </div>
   </section>

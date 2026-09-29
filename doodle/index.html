@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Doodle UI Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Sniglet:wght@800&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><filter id="rough" x="-8%" y="-30%" width="116%" height="160%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="7" result="a"/><feDisplacementMap in="SourceGraphic" in2="a" scale="6" xChannelSelector="R" yChannelSelector="G" result="b"/><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="3" result="c"/><feDisplacementMap in="b" in2="c" scale="2.5" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+<main>
+  <header class="panel">
+    <div>
+      <h1>Doodle</h1>
+    </div>
+  </header>
+
+  <div class="grid">
+    <section class="panel">
+      <h2>Buttons</h2>
+      <div class="row">
+        <button class="btn">Submit</button>
+        <button class="btn alt">Cancel</button>
+      </div>
+      <div class="row">
+        <button class="btn sm">Small</button>
+        <button class="btn sm alt">Small</button>
+        <button class="btn icon" aria-label="Favorite"><i class="ic-heart"></i></button>
+        <button class="btn" disabled>Disabled</button>
+      </div>
+      <div class="row">
+        <button class="btn alt like" aria-pressed="false"><i class="ic-heart"></i><span class="count">24</span></button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Text field</h2>
+      <label class="field">Your name
+        <input type="text" placeholder="Write it in pen">
+      </label>
+      <div class="note"><i class="ic-heart"></i>Your name shows on your homework.</div>
+    </section>
+
+    <section class="panel">
+      <h2>Switches</h2>
+      <label class="switch">Study reminders <input type="checkbox" checked></label>
+      <label class="switch">Show due dates <input type="checkbox"></label>
+    </section>
+
+    <section class="panel">
+      <h2>Chips</h2>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" checked><span>Math</span></label>
+        <label class="chip"><input type="checkbox"><span>History</span></label>
+        <label class="chip"><input type="checkbox"><span>Art</span></label>
+        <label class="chip"><input type="checkbox" checked><span>Bio</span></label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Progress</h2>
+      <div class="bar" role="progressbar" aria-label="Assignment progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40" id="bar"><i></i></div>
+      <label class="field">Drag to change
+        <input type="range" id="prog" min="0" max="100" value="40">
+      </label>
+    </section>
+
+    <section class="panel" id="tabs">
+      <h2>Tabs</h2>
+      <div class="tablist" role="tablist">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="t1" id="tb1">Due</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="t2" id="tb2">Done</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="t3" id="tb3">Notes</button>
+      </div>
+      <p class="tabpanel" role="tabpanel" id="t1" aria-labelledby="tb1">Two essays and a lab report.</p>
+      <p class="tabpanel" role="tabpanel" id="t2" aria-labelledby="tb2" hidden>Five assignments handed in.</p>
+      <p class="tabpanel" role="tabpanel" id="t3" aria-labelledby="tb3" hidden>Scribbles from class.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Accordion</h2>
+      <div id="acc">
+        <details class="acc" open><summary>Can I edit after submitting?</summary><div>Yes, until the due date passes.</div></details>
+        <details class="acc"><summary>Where do my grades show up?</summary><div>On the Done tab, once marked.</div></details>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Stickers &amp; avatars</h2>
+      <div class="stickers">
+        <span class="sticker">new!</span>
+        <span class="sticker b">due today</span>
+        <div class="avatars"><span class="avatar">M</span><span class="avatar">K</span><span class="avatar">+3</span></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$$('.like').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true',c=b.querySelector('.count');
+ b.setAttribute('aria-pressed',on);c.textContent=+c.textContent+(on?1:-1)});
+$('#prog').oninput=e=>{$('#bar').style.setProperty('--v',e.target.value+'%');$('#bar').setAttribute('aria-valuenow',e.target.value)};
+$('#bar').style.setProperty('--v','40%');
+$$('#tabs .tab').forEach(t=>t.onclick=()=>{
+ $$('#tabs .tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+ $$('#tabs .tabpanel').forEach(p=>p.hidden=p.id!==t.getAttribute('aria-controls'))});
+</script>
+</body>
+</html>
