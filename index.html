@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>UI Kits</title>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Sniglet:wght@800&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Sniglet:wght@800&family=Patrick+Hand&family=Shrikhand&family=Caveat:wght@600;700&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--heart:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 40'%3E%3Cpath d='M22 38C6 26 1 18 1 11 1 5 6 1 11 1c5 0 9 3 11 7 2-4 6-7 11-7 5 0 10 4 10 10 0 7-5 15-21 27z'/%3E%3C/svg%3E");
  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -123,6 +123,67 @@ html[data-skin=doodle] .chip input:checked+span{--fill:var(--ink);color:var(--ch
 html[data-skin=doodle] .bar{height:26px;padding:5px;overflow:visible}
 html[data-skin=doodle] .bar i{background:var(--ink);border-radius:var(--wob);filter:url(#rough)}
 html[data-skin=doodle] pre{background:var(--wash);border:3px solid var(--ink);border-radius:var(--wob)}
+
+html[data-skin=scrapbook]{--desk:#f3e0c2;--paper:#fffdf6;--paper-2:#fff6e3;--ink:#4a3b32;--ink-soft:#857065;--red:#ff5d6c;--red-deep:#c92f45;--yellow:#ffcf40;--yellow-soft:#ffec9e;--blue:#43b0ff;--blue-soft:#cdeaff;--mint:#2fc795;--mint-soft:#c7f0dd;--pink:#ff8fbf;--pink-soft:#ffd2e5;--tape:repeating-linear-gradient(-45deg,var(--pink) 0 9px,#ffb9d8 9px 18px);--dp:var(--red-deep);--bg:var(--desk)}
+@media (prefers-color-scheme:dark){
+ html[data-skin=scrapbook]:not([data-theme=light]){--desk:#2b241e;--paper:#352b23;--paper-2:#3e3227;--ink:#ffe9cf;--ink-soft:#c9ae97}
+}
+html[data-theme=dark][data-skin=scrapbook]{--desk:#2b241e;--paper:#352b23;--paper-2:#3e3227;--ink:#ffe9cf;--ink-soft:#c9ae97}
+html[data-skin=scrapbook] body{font-family:Nunito,"Hiragino Maru Gothic ProN",system-ui,sans-serif;font-weight:600;background-color:var(--desk);background-image:radial-gradient(rgba(74,59,50,.16) 1.6px,transparent 1.7px),radial-gradient(rgba(255,255,255,.5) 1.2px,transparent 1.3px),linear-gradient(180deg,rgba(255,255,255,.25),rgba(0,0,0,.06));background-size:26px 26px,26px 26px,100% 100%;background-position:0 0,13px 13px,0 0}
+html[data-skin=scrapbook] :is(h1,h2,h3,.brand){font-family:Shrikhand,Nunito,system-ui,sans-serif;font-weight:400;letter-spacing:.01em}
+html[data-skin=scrapbook] h2::before{content:"★";color:var(--red);margin-right:.4em;font-size:.85em;vertical-align:.1em}
+html[data-skin=scrapbook] .lede{font-family:Caveat,cursive;font-size:1.5rem;line-height:1.35}
+html[data-skin=scrapbook] .panel{position:relative;background:var(--paper);border:2.5px solid var(--ink);border-radius:16px 18px 16px 20px;box-shadow:6px 6px 0 var(--ink);margin-top:12px}
+html[data-skin=scrapbook] .panel::before{content:"";position:absolute;top:-15px;left:50%;width:118px;height:30px;transform:translateX(-50%) rotate(-3deg);background:var(--tape);opacity:.92;border-left:2px dashed rgba(255,255,255,.7);border-right:2px dashed rgba(255,255,255,.7);box-shadow:0 2px 4px rgba(74,59,50,.25);pointer-events:none;border-radius:2px}
+html[data-skin=scrapbook] .cols>.panel:nth-child(3n)::before{--tape:repeating-linear-gradient(-45deg,var(--mint) 0 9px,#9fe8cc 9px 18px);transform:translateX(-50%) rotate(4deg)}
+html[data-skin=scrapbook] .cols>.panel:nth-child(3n+1)::before{--tape:repeating-linear-gradient(-45deg,var(--yellow) 0 9px,#ffe58a 9px 18px);transform:translateX(-50%) rotate(-5deg)}
+html[data-skin=scrapbook] .cols>.panel:nth-child(4n)::before{--tape:repeating-linear-gradient(-45deg,var(--blue) 0 9px,#a9d9ff 9px 18px);transform:translateX(-50%) rotate(2deg)}
+html[data-skin=scrapbook] .cols>.panel:nth-child(odd){transform:rotate(-.5deg)}
+html[data-skin=scrapbook] .cols>.panel:nth-child(even){transform:rotate(.6deg)}
+html[data-skin=scrapbook] .btn{background:var(--yellow);color:#4a3b32;border:2.5px solid var(--ink);border-radius:13px;box-shadow:3px 3px 0 var(--ink);transform:rotate(-.8deg)}
+html[data-skin=scrapbook] .btn.alt{background:var(--paper);color:var(--ink);border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transform:rotate(.7deg);padding:13px 24px}
+html[data-skin=scrapbook] .btn.main{background:var(--yellow)}
+html[data-skin=scrapbook] .btn:hover{transform:rotate(0deg) translateY(-1px);box-shadow:4px 5px 0 var(--ink)}
+html[data-skin=scrapbook] .btn:active{transform:translateY(3px) rotate(0deg);box-shadow:0 0 0 var(--ink)}
+html[data-skin=scrapbook] .btn.alt[aria-checked=true]{background:var(--ink);color:var(--paper)}
+html[data-skin=scrapbook] .like{background:#fff}
+html[data-skin=scrapbook] .like .ic{color:#d8c9bd;opacity:1}
+html[data-skin=scrapbook] .like[aria-pressed=true]{background:var(--pink-soft)}
+html[data-skin=scrapbook] .like[aria-pressed=true] .ic{color:var(--red-deep);transform:scale(1.2) rotate(-8deg)}
+html[data-skin=scrapbook] .sw{background:var(--paper-2);border:2px dashed var(--ink);border-radius:12px;padding:10px 12px;transform:rotate(-.4deg)}
+html[data-skin=scrapbook] .sw input{width:60px;height:32px;border-radius:99px;border:2.5px solid var(--ink);background:#fff;box-shadow:2px 2px 0 var(--ink)}
+html[data-skin=scrapbook] .sw input::after{content:"★";display:grid;place-items:center;font-size:.8rem;color:#fff;top:2px;left:2px;width:23px;height:23px;border-radius:50%;background:var(--red);border:2px solid var(--ink);transition:transform .22s cubic-bezier(.3,1.5,.5,1),background .2s}
+html[data-skin=scrapbook] .sw input:checked{background:var(--mint-soft)}
+html[data-skin=scrapbook] .sw input:checked::after{transform:translateX(27px);background:var(--mint)}
+html[data-skin=scrapbook] .chip span{background:#fff;border:2.5px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
+html[data-skin=scrapbook] .chip:nth-child(4n+1) input:checked+span{background:var(--pink-soft)}
+html[data-skin=scrapbook] .chip:nth-child(4n+2) input:checked+span{background:var(--yellow-soft)}
+html[data-skin=scrapbook] .chip:nth-child(4n+3) input:checked+span{background:var(--mint-soft)}
+html[data-skin=scrapbook] .chip:nth-child(4n+4) input:checked+span{background:var(--blue-soft)}
+html[data-skin=scrapbook] .bar{height:26px;border:2.5px solid var(--ink);background:#fff;padding:3px;box-shadow:3px 3px 0 var(--ink)}
+html[data-skin=scrapbook] .bar i{position:relative;border:2px solid var(--ink);background:repeating-linear-gradient(-55deg,rgba(255,255,255,.55) 0 10px,rgba(255,255,255,0) 10px 20px),linear-gradient(90deg,var(--pink),var(--yellow) 35%,var(--mint) 70%,var(--blue))}
+html[data-skin=scrapbook] .bar i::after{content:"★";position:absolute;right:4px;top:50%;transform:translateY(-52%);font-size:.8rem;color:#fff;text-shadow:1px 1px 0 var(--ink)}
+html[data-skin=scrapbook] input[type=range]{accent-color:var(--red-deep)}
+html[data-skin=scrapbook] pre{background:var(--paper-2);border:2.5px dashed var(--ink);box-shadow:none}
+
+html[data-skin=glass]{--ink:#eaedf3;--dp:#e6a1ab;--ac:#c77b87;--pink:#c77b87;--tint:rgba(7,9,14,.42);--hi:rgba(255,255,255,.16);--shade:rgba(0,0,0,.32);--rim:rgba(255,255,255,.22);--rimd:rgba(0,0,0,.4);--edge:.38;--bg:radial-gradient(120% 70% at 15% 0%,#6b3a52 0,transparent 60%),radial-gradient(90% 60% at 100% 35%,#2d3358 0,transparent 65%),radial-gradient(80% 50% at 40% 100%,#7a3f4a 0,transparent 60%),linear-gradient(115deg,#1b1020,#2a1630 45%,#16131f)}
+html[data-theme=light][data-skin=glass]{--ink:#f0e7dc;--tint:rgba(243,237,225,.14);--hi:rgba(255,255,255,.22);--shade:transparent;--rim:rgba(255,255,255,.35);--rimd:transparent;--edge:.32}
+@media (prefers-color-scheme:light){html[data-skin=glass]:not([data-theme=dark]){--ink:#f0e7dc;--tint:rgba(243,237,225,.14);--hi:rgba(255,255,255,.22);--shade:transparent;--rim:rgba(255,255,255,.35);--rimd:transparent;--edge:.32}}
+html[data-skin=glass] body{font-family:Didot,"Bodoni 72","Playfair Display",Georgia,serif;font-weight:400;letter-spacing:.025em;background:var(--bg) fixed,#16131f}
+html[data-skin=glass] :is(h1,h2,h3,.brand){font-weight:700}
+html[data-skin=glass] :is(.panel,.btn,.chip span,.pill,.bar,pre){border:0;border-radius:6px;background:linear-gradient(to bottom,var(--hi),transparent 10px),linear-gradient(to top,var(--shade),transparent 14px),linear-gradient(to right,rgb(199 123 135/var(--edge)),transparent 52px),var(--tint);box-shadow:inset 0 0 0 1.3px var(--rimd),inset 0 0 0 2.3px var(--rim),0 8px 24px -10px rgba(0,0,0,.6);text-shadow:0 .5px 2.5px rgba(0,0,0,.55)}
+html[data-skin=glass] .btn{font-weight:700}
+html[data-skin=glass] .btn:not(.alt):not(.like){background:linear-gradient(to bottom,var(--hi),transparent 10px),linear-gradient(to right,rgb(199 123 135/.75),rgb(199 123 135/.25) 70%),var(--tint)}
+html[data-skin=glass] .btn:hover{filter:brightness(1.15)}html[data-skin=glass] .btn:active{transform:translateY(1px);filter:brightness(.92)}
+html[data-skin=glass] .btn.alt[aria-checked=true]{background:linear-gradient(to bottom,var(--hi),transparent 10px),linear-gradient(90deg,rgb(199 123 135/.7),rgb(199 123 135/.3)),var(--tint)}
+html[data-skin=glass] .like .ic{opacity:.35}html[data-skin=glass] .like[aria-pressed=true] .ic{opacity:1;color:var(--ac)}
+html[data-skin=glass] .sw input{width:54px;height:28px;border-radius:99px;background:linear-gradient(to bottom,var(--hi),transparent 10px),var(--tint);box-shadow:inset 0 0 0 1.3px var(--rimd),inset 0 0 0 2.3px var(--rim)}
+html[data-skin=glass] .sw input::after{top:4px;left:4px;width:20px;height:20px;background:#8b8c9e;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 1px 3px rgba(0,0,0,.6)}
+html[data-skin=glass] .sw input:checked::after{transform:translateX(26px);background:var(--ac)}
+html[data-skin=glass] .chip input:checked+span{background:linear-gradient(to bottom,var(--hi),transparent 10px),linear-gradient(90deg,rgb(199 123 135/.7),rgb(199 123 135/.3)),var(--tint)}
+html[data-skin=glass] .bar{height:22px;padding:4px}
+html[data-skin=glass] .bar i{background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent 50%),linear-gradient(90deg,#8b4a5a,var(--ac));box-shadow:0 0 10px rgb(199 123 135/.5)}
+html[data-skin=glass] pre{background:linear-gradient(to bottom,var(--hi),transparent 10px),var(--tint)}
 </style>
 </head>
 <body>
@@ -130,7 +191,7 @@ html[data-skin=doodle] pre{background:var(--wash);border:3px solid var(--ink);bo
 <div class="wrap">
   <header class="top">
     <a class="brand" href="#">Auraea</a>
-    <nav aria-label="Main"><a href="pink-picnic/">Pink Picnic</a><a href="neumorphic/">Neumorphic</a><a href="doodle/">Doodle</a></nav>
+    <nav aria-label="Main"><a href="pink-picnic/">Pink Picnic</a><a href="neumorphic/">Neumorphic</a><a href="doodle/">Doodle</a><a href="scrapbook/">Scrapbook</a><a href="glass/">Glass</a><a href="#sites">Full sites</a></nav>
   </header>
 
   <div class="hero">
@@ -147,6 +208,8 @@ html[data-skin=doodle] pre{background:var(--wash);border:3px solid var(--ink);bo
         <button class="btn alt" role="radio" aria-checked="true" data-skin="pico">Pink Picnic</button>
         <button class="btn alt" role="radio" aria-checked="false" data-skin="neu">Neumorphic</button>
         <button class="btn alt" role="radio" aria-checked="false" data-skin="doodle">Doodle</button>
+        <button class="btn alt" role="radio" aria-checked="false" data-skin="scrapbook">Scrapbook</button>
+        <!-- the glass button is removed, but its logic is not. This is intentional -->
       </div>
       <div class="row">
         <button class="btn main">Save</button>
@@ -170,17 +233,33 @@ html[data-skin=doodle] pre{background:var(--wash);border:3px solid var(--ink);bo
       <div class="panel">
         <h3>Pink Picnic</h3>
         <p>Candy stripes, chunky outlines and sticker-style badges. Very cutesy.</p>
-        <div class="row"><button class="btn alt" data-skin="pico">Preview this skin</button></div>
+        <div class="row"><button class="btn alt" data-skin="pico">Preview this skin</button><a class="btn alt" href="pink-picnic/" style="text-decoration:none">Open full page</a></div>
       </div>
       <div class="panel">
         <h3>Neumorphic</h3>
         <p>One soft grey surface. Sleek and looks 3d. UI elements look like they've been carved out of the page.</p>
-        <div class="row"><button class="btn alt" data-skin="neu">Preview this skin</button></div>
+        <div class="row"><button class="btn alt" data-skin="neu">Preview this skin</button><a class="btn alt" href="neumorphic/" style="text-decoration:none">Open full page</a></div>
       </div>
       <div class="panel">
         <h3>Doodle</h3>
         <p>Ink on white paper. Wobbly outlines, chalky fills, and a hand-drawn cursor.</p>
-        <div class="row"><button class="btn alt" data-skin="doodle">Preview this skin</button></div>
+        <div class="row"><button class="btn alt" data-skin="doodle">Preview this skin</button><a class="btn alt" href="doodle/" style="text-decoration:none">Open full page</a></div>
+      </div>
+      <div class="panel">
+        <h3>Scrapbook</h3>
+        <p>Taped paper cards, washi strips, sticker buttons and rainbow stars.</p>
+        <div class="row"><button class="btn alt" data-skin="scrapbook">Preview this skin</button><a class="btn alt" href="scrapbook/" style="text-decoration:none">Open full page</a></div>
+      </div>
+  </section>
+
+  <section class="blk" id="sites">
+    <h2>Full sites:</h2>
+    <p class="sub">Whole standalone pages. They keep their own design, so the skin picker doesn't change them.</p>
+    <div class="cols">
+      <div class="panel">
+        <h3>Monolith</h3>
+        <p>A scroll-driven studio landing page.</p>
+        <div class="row"><a class="btn alt" href="full-sites/monolith/">Open site</a></div>
       </div>
     </div>
   </section>

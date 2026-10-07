@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Monolith</title>
+<style>
+:root{--ink:#f3e6d3;--void:#050509;--ground:#140a07;--ac:#e8a35a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="dark"],:root:not([data-theme="light"]){--ink:#f3e6d3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#f3e6d3}}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--ground);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:calc(18px + env(safe-area-inset-top,0px)) 28px 18px}
+nav b{font-weight:400;letter-spacing:.3em;font-size:14px}
+nav a{color:var(--ink);text-decoration:none;font-size:14px;margin-left:24px;opacity:.8}
+nav a:hover,nav a:focus-visible{opacity:1;outline:1px solid var(--ink);outline-offset:4px}
+#run{height:380vh;position:relative}
+#stage{position:sticky;top:0;height:100vh;overflow:hidden}
+svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cap{position:absolute;left:0;right:0;text-align:center;padding:0 24px;opacity:0;pointer-events:none}
+.cap h1,.cap h2{font-weight:400;font-size:clamp(34px,7vw,84px);line-height:1.05;letter-spacing:-.01em}
+.cap p{max-width:44ch;margin:18px auto 0;font-size:18px}
+#c1{top:80%}#c2{top:80%}#c3{top:9%}
+#c3{pointer-events:auto;text-shadow:0 2px 18px rgba(20,10,7,.6)}
+#c3 h2{font-size:clamp(26px,4.4vw,56px)}
+@media (min-aspect-ratio:1/1){#c3{top:26%;right:auto;left:6%;text-align:left;max-width:min(440px,34vw)}#c3 p{margin-left:0}}
+.btn{display:inline-block;margin-top:26px;padding:14px 28px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;font-size:16px;background:rgba(5,5,9,.35)}
+.btn:hover,.btn:focus-visible{background:var(--ink);color:#140a07;outline:none}
+#more{background:var(--ground);padding:110px 28px 60px}
+.w{max-width:960px;margin:0 auto}
+.w h2{font-weight:400;font-size:clamp(28px,4vw,44px);max-width:20ch;line-height:1.15}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;margin-top:56px}
+.g h3{font-weight:400;font-size:22px;color:var(--ac);margin-bottom:8px}
+.g p{opacity:.8}
+footer{max-width:960px;margin:90px auto 0;padding-top:24px;border-top:1px solid rgba(243,230,211,.2);font-size:14px;opacity:.6}
+@media (prefers-reduced-motion:reduce){.cap{transition:none}}
+</style>
+</head>
+<body>
+<nav><b>MONOLITH</b><div><a href="#more">Work</a><a href="#more">About</a><a href="#more">Contact</a></div></nav>
+
+<div id="run">
+<div id="stage">
+<svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+<defs><radialGradient id="glow"><stop offset="0" stop-color="#fff3d6" stop-opacity=".9"/><stop offset="1" stop-color="#fff3d6" stop-opacity="0"/></radialGradient></defs>
+<rect id="sky" x="-4000" y="-4000" width="8400" height="4800"/>
+<g id="moon"><circle cx="200" cy="100" r="15" fill="#e8e6e0"/><circle cx="200" cy="93" r="15" id="moonmask"/></g>
+<g id="rays" stroke="#f6dfb4" stroke-width="1.4" opacity="0"></g>
+<circle id="halo" cx="200" cy="270" r="150" fill="url(#glow)" opacity="0"/>
+<circle id="sun" cx="200" cy="300" r="28" fill="#fffaf0"/>
+<polygon points="148,255 252,255 260,590 140,590" fill="#010102"/>
+<rect x="-4000" y="590" width="8400" height="4000" fill="#140a07"/>
+</svg>
+<div class="cap" id="c1"><h1>Before anything, silence.</h1></div>
+<div class="cap" id="c2"><h1>Then the first light.</h1></div>
+<div class="cap" id="c3"><h2>Build something that stands alone.</h2><p>Monolith is not a real a studio.</p><a class="btn" href="#more">See the work</a></div>
+</div>
+</div>
+
+<section id="more"><div class="w">
+<h2>Something Text-related</h2>
+<div class="g">
+<div><h3>Identity</h3><p>Names, marks and systems.</p></div>
+<div><h3>Websites</h3><p>Fast, quiet sites where motion appears only when it matters.</p></div>
+<div><h3>Launch</h3><p>Art direction and story for the day your work first meets the light.</p></div>
+</div>
+<footer>Monolith Studio. hello@monolith.example</footer>
+</div></section>
+
+<script>
+var L=function(a,b,t){return a.map(function(v,i){return Math.round(v+(b[i]-v)*t)})},
+C=function(a){return"rgb("+a.join(",")+")"};
+var N=[[5,5,10],[16,12,26],[48,22,20]],D=[[107,84,64],[190,140,90],[232,163,90]];
+var sky=document.getElementById("sky"),svg=document.querySelector("svg");
+var g=document.createElementNS("http://www.w3.org/2000/svg","linearGradient");
+g.id="sg";g.setAttribute("gradientUnits","userSpaceOnUse");g.setAttribute("x1",0);g.setAttribute("y1",0);g.setAttribute("x2",0);g.setAttribute("y2",800);
+for(var i=0;i<3;i++){var s=document.createElementNS(svg.namespaceURI,"stop");s.setAttribute("offset",[0,.55,.74][i]);g.appendChild(s)}
+svg.querySelector("defs").appendChild(g);sky.setAttribute("fill","url(#sg)");
+var stops=g.children,rays=document.getElementById("rays");
+for(i=0;i<16;i++){var a=i*Math.PI*2/16+.1,l=document.createElementNS(svg.namespaceURI,"line");
+l.setAttribute("x1",200+Math.cos(a)*34);l.setAttribute("y1",Math.sin(a)*34);
+l.setAttribute("x2",200+Math.cos(a)*(520));l.setAttribute("y2",Math.sin(a)*520);
+l.setAttribute("stroke-opacity",i%3?".8":".4");rays.appendChild(l)}
+var sun=document.getElementById("sun"),halo=document.getElementById("halo"),moon=document.getElementById("moon"),mm=document.getElementById("moonmask");
+var run=document.getElementById("run"),c=[c1,c2,c3];
+function fade(el,p,a,b,c2_,d){var o=p<a?0:p<b?(p-a)/(b-a):p<c2_?1:p<d?1-(p-c2_)/(d-c2_):(d>=1?1:0);el.style.opacity=Math.max(0,Math.min(1,o))}
+function draw(){
+var p=Math.max(0,Math.min(1,scrollY/(run.offsetHeight-innerHeight)));
+var e=p*p*(3-2*p),t=Math.max(0,Math.min(1,(p-.15)/.7));t=t*t*(3-2*t);
+for(var k=0;k<3;k++)stops[k].setAttribute("stop-color",C(L(N[k],D[k],t)));
+mm.setAttribute("fill",C(L(N[0],D[0],t)));
+var sy=300-t*(85);
+sun.setAttribute("cy",sy);halo.setAttribute("cy",sy);
+rays.setAttribute("transform","translate(0,"+sy+")");
+rays.setAttribute("opacity",Math.max(0,(t-.5)*2));
+halo.setAttribute("opacity",t);
+moon.setAttribute("opacity",1-t*.75);
+moon.setAttribute("transform","translate(0,"+(t*10)+")");
+fade(c1,p,-1,0,.14,.22);fade(c2,p,.3,.4,.55,.65);fade(c3,p,.75,.9,2,2);
+c3.style.pointerEvents=p>.85?"auto":"none";
+}
+addEventListener("scroll",draw,{passive:true});addEventListener("resize",draw);draw();
+</script>
+</body>
+</html>

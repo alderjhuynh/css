@@ -1,0 +1,63 @@
+/* Glass: no blur, no backdrop-filter. Panels are translucent tint layers over the
+   page "wallpaper"; depth comes from a top highlight, bottom shade, accent edge wash,
+   and a dark+light double rim (same recipe as the desktop toast). */
+:root{--ink:#eaedf3;--accent:#c77b87;--warn:#b3382e;--off:#8b8c9e;
+ --tint:rgba(7,9,14,.42);--hi:rgba(255,255,255,.16);--shade:rgba(0,0,0,.32);--rim:rgba(255,255,255,.22);--rimd:rgba(0,0,0,.4);--edge:.38;
+ --wall:radial-gradient(120% 70% at 15% 0%,#6b3a52 0,transparent 60%),radial-gradient(90% 60% at 100% 35%,#2d3358 0,transparent 65%),radial-gradient(80% 50% at 40% 100%,#7a3f4a 0,transparent 60%),linear-gradient(115deg,#1b1020,#2a1630 45%,#16131f);
+ --r:6px;--serif:Didot,"Bodoni 72","Playfair Display",Georgia,serif;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme=dark]){--ink:#f0e7dc;--tint:rgba(243,237,225,.14);--hi:rgba(255,255,255,.22);--shade:transparent;--rim:rgba(255,255,255,.35);--rimd:transparent;--edge:.32}}
+:root[data-theme=light]{--ink:#f0e7dc;--tint:rgba(243,237,225,.14);--hi:rgba(255,255,255,.22);--shade:transparent;--rim:rgba(255,255,255,.35);--rimd:transparent;--edge:.32}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;padding:24px 16px 56px;color:var(--ink);font:400 1rem/1.55 var(--serif);letter-spacing:.025em;background:var(--wall) fixed,#16131f}
+main{max-width:980px;margin:0 auto;display:grid;gap:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:22px;align-items:start}
+h1,h2{margin:0;font-weight:700}h1{font-size:2.3rem;line-height:1.1}h2{font-size:1.15rem}p{margin:4px 0 0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:var(--r)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* the glass recipe: highlight, shade, edge wash, tint, then rims */
+.panel,.btn,.chip span,.bar,.acc,.note,.tab,.field input[type=text],.switch input,.tabpanel{
+ border:0;border-radius:var(--r);
+ background:linear-gradient(to bottom,var(--hi),transparent 10px),linear-gradient(to top,var(--shade),transparent 14px),
+  linear-gradient(to right,rgb(199 123 135/var(--edge)),transparent 52px),var(--tint);
+ box-shadow:inset 0 0 0 1.3px var(--rimd),inset 0 0 0 2.3px var(--rim),0 8px 24px -10px rgba(0,0,0,.6)}
+.panel,.btn,.tab,.chip span,.acc summary,.note,.field input{text-shadow:0 .5px 2.5px rgba(0,0,0,.55)}
+.panel{padding:20px;display:grid;gap:14px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+
+.btn,.tab{font:inherit;font-weight:700;color:var(--ink);padding:12px 22px;cursor:pointer;transition:transform .12s,filter .15s}
+.btn{flex:1}.btn.sm{flex:none;padding:7px 16px;font-size:.9rem}.btn.icon{flex:none;width:48px;height:48px;padding:0;display:grid;place-items:center}
+.btn:not(.alt):not(.icon):not(.like){background:linear-gradient(to bottom,var(--hi),transparent 10px),linear-gradient(to right,rgb(199 123 135/.75),rgb(199 123 135/.25) 70%),var(--tint)}
+.btn:hover:not(:disabled){filter:brightness(1.15)}.btn:active:not(:disabled){transform:translateY(1px);filter:brightness(.92)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.ic-heart{display:inline-block;width:1.25em;aspect-ratio:44/40;background:currentColor;-webkit-mask:var(--heart) center/contain no-repeat;mask:var(--heart) center/contain no-repeat;--heart:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 40'%3E%3Cpath d='M22 38C6 26 1 18 1 11 1 5 6 1 11 1c5 0 9 3 11 7 2-4 6-7 11-7 5 0 10 4 10 10 0 7-5 15-21 27z'/%3E%3C/svg%3E")}
+.like{flex:none;display:inline-flex;align-items:center;gap:10px}.like .ic-heart{opacity:.35;transition:transform .2s cubic-bezier(.3,1.6,.5,1),color .2s}
+.like[aria-pressed=true] .ic-heart{opacity:1;color:var(--accent);transform:scale(1.2)}
+
+.switch{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.switch input{appearance:none;-webkit-appearance:none;margin:0;width:54px;height:28px;border-radius:99px;position:relative;cursor:pointer}
+.switch input::after{content:"";position:absolute;top:4px;left:4px;width:20px;height:20px;border-radius:50%;background:var(--off);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 1px 3px rgba(0,0,0,.6);transition:transform .2s cubic-bezier(.3,1.4,.5,1),background .2s}
+.switch input:checked::after{transform:translateX(26px);background:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}.chip{position:relative}.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:block;padding:5px 16px;font-size:.92rem;border-radius:99px}
+.chip input:checked+span{background:linear-gradient(to bottom,var(--hi),transparent 10px),linear-gradient(90deg,rgb(199 123 135/.7),rgb(199 123 135/.3)),var(--tint)}
+.chip input:focus-visible+span{outline:2px solid var(--accent);outline-offset:3px}
+.field{display:grid;gap:6px;font-size:.92rem}.field input[type=text]{font:inherit;color:var(--ink);padding:10px 14px;box-shadow:inset 0 1px 4px rgba(0,0,0,.5),inset 0 0 0 1.3px var(--rimd),inset 0 0 0 2.3px var(--rim)}
+.field input::placeholder{color:var(--ink);opacity:.5}input[type=range]{width:100%;accent-color:var(--accent)}
+.note{display:flex;gap:10px;align-items:center;padding:12px 14px}
+.bar{height:22px;padding:4px;border-radius:99px}.bar i{display:block;height:100%;width:var(--v,40%);border-radius:99px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent 50%),linear-gradient(90deg,#8b4a5a,var(--accent));box-shadow:0 0 10px rgb(199 123 135/.5);transition:width .25s}
+.tablist{display:flex;flex-wrap:wrap;gap:8px}.tab{padding:7px 16px;opacity:.65}.tab[aria-selected=true]{opacity:1;background:linear-gradient(to bottom,var(--hi),transparent 10px),linear-gradient(90deg,rgb(199 123 135/.6),rgb(199 123 135/.2)),var(--tint)}
+.tabpanel{margin:0;padding:10px 14px}
+.acc{overflow:hidden}.acc summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.acc summary::-webkit-details-marker{display:none}.acc summary::after{content:"+";font-size:1.4rem;line-height:1;transition:transform .2s}.acc[open] summary::after{transform:rotate(45deg)}
+.acc div{padding:0 16px 14px}#acc{display:grid;gap:12px}
+
+/* toasts: the original component, live */
+#toasts{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));display:grid;gap:8px;width:280px;max-width:calc(100vw - 24px);pointer-events:none;z-index:9}
+.toast{display:flex;justify-content:space-between;align-items:center;height:44px;padding:0 14px;border-radius:var(--r);animation:in .18s ease-out both;
+ background:linear-gradient(to bottom,var(--hi),transparent 10px),linear-gradient(to top,var(--shade),transparent 14px),linear-gradient(to right,rgb(199 123 135/var(--edge)),transparent 52px),rgba(7,9,14,.72);
+ box-shadow:inset 0 0 0 1.3px var(--rimd),inset 0 0 0 2.3px var(--rim),0 8px 24px -10px #000;text-shadow:0 .5px 2.5px rgba(0,0,0,.55)}
+.toast b{font-size:.78rem;letter-spacing:.12em;color:var(--accent)}.toast.out{animation:out .18s ease-in both}
+@keyframes in{from{transform:translateX(120%)}}@keyframes out{to{transform:translateX(120%)}}

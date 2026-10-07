@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Glass UI Kit</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <header class="panel"><h1>Glass</h1><p>No blur. Clear panes over the backdrop, with depth from highlights, shade and a double rim.</p></header>
+  <div class="grid">
+    <section class="panel"><h2>Buttons</h2>
+      <div class="row"><button class="btn">Submit</button><button class="btn alt">Cancel</button></div>
+      <div class="row"><button class="btn sm">Small</button><button class="btn sm alt">Small</button><button class="btn alt icon" aria-label="Favorite"><i class="ic-heart"></i></button><button class="btn alt" disabled>Disabled</button></div>
+      <div class="row"><button class="btn alt like" aria-pressed="false"><i class="ic-heart"></i><span class="count">24</span></button><button class="btn alt" id="toast">Show a toast</button></div>
+    </section>
+    <section class="panel"><h2>Text field</h2>
+      <label class="field">Your name<input type="text" placeholder="Type here"></label>
+      <div class="note"><i class="ic-heart"></i>Fields are inset, panes are raised.</div>
+    </section>
+    <section class="panel"><h2>Switches</h2>
+      <label class="switch">Notifications <input type="checkbox" checked></label>
+      <label class="switch">Show previews <input type="checkbox"></label>
+    </section>
+    <section class="panel"><h2>Chips</h2>
+      <div class="chips"><label class="chip"><input type="checkbox" checked><span>Clear</span></label><label class="chip"><input type="checkbox"><span>Sheer</span></label><label class="chip"><input type="checkbox" checked><span>Tinted</span></label></div>
+    </section>
+    <section class="panel"><h2>Progress</h2>
+      <div class="bar" id="bar" role="progressbar" aria-label="Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"><i></i></div>
+      <label class="field">Drag to change<input type="range" id="prog" min="0" max="100" value="60"></label>
+    </section>
+    <section class="panel" id="tabs"><h2>Tabs</h2>
+      <div class="tablist" role="tablist">
+        <button class="tab btn alt" role="tab" aria-selected="true" aria-controls="t1">One</button>
+        <button class="tab btn alt" role="tab" aria-selected="false" aria-controls="t2">Two</button>
+        <button class="tab btn alt" role="tab" aria-selected="false" aria-controls="t3">Three</button>
+      </div>
+      <p class="tabpanel" role="tabpanel" id="t1">The first pane.</p>
+      <p class="tabpanel" role="tabpanel" id="t2" hidden>The second pane.</p>
+      <p class="tabpanel" role="tabpanel" id="t3" hidden>The third pane.</p>
+    </section>
+    <section class="panel"><h2>Accordion</h2>
+      <div id="acc"><details class="acc" open><summary>Is anything blurred?</summary><div>No. Nothing behind a panel is blurred or warped.</div></details><details class="acc"><summary>Where does the depth come from?</summary><div>Shading: a top highlight, a bottom shade and the rim.</div></details></div>
+    </section>
+  </div>
+</main>
+<div id="toasts" aria-live="polite"></div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$$('.like').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true',c=b.querySelector('.count');b.setAttribute('aria-pressed',on);c.textContent=+c.textContent+(on?1:-1)});
+$('#prog').oninput=e=>{$('#bar').style.setProperty('--v',e.target.value+'%');$('#bar').setAttribute('aria-valuenow',e.target.value)};
+$('#bar').style.setProperty('--v','60%');
+$$('#tabs .tab').forEach(t=>t.onclick=()=>{$$('#tabs .tab').forEach(x=>x.setAttribute('aria-selected',x===t));$$('#tabs .tabpanel').forEach(p=>p.hidden=p.id!==t.getAttribute('aria-controls'))});
+let n=0;$('#toast').onclick=()=>{const box=$('#toasts');while(box.children.length>=5)box.firstChild.remove();
+ const t=document.createElement('div');t.className='toast';t.innerHTML='<span>Saved to library</span><b>ON</b>';box.append(t);
+ setTimeout(()=>{t.classList.add('out');setTimeout(()=>t.remove(),180)},1800)};
+</script>
+</body>
+</html>

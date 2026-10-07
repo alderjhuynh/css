@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scrapbook UI Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Caveat:wght@600;700&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <header class="panel cover">
+    <div class="cover-top">
+      <h1>Scrapbook</h1>
+      <div class="cover-badges" aria-label="Decorations">
+        <span class="mini-tag t1">cut + paste!</span>
+        <span class="mini-tag t2">100% glue stick</span>
+        <span class="mini-tag t3">be kind, rewind</span>
+      </div>
+    </div>
+    <div class="collage">
+      <figure class="photo" style="margin:0">
+        <div class="ph" role="img" aria-label="Doodle sky with sun over green hills"></div>
+        <figcaption>summer picnic, pt. 1 ♡</figcaption>
+      </figure>
+      <figure class="photo" style="margin:0">
+        <div class="ph" role="img" aria-label="Second doodle sky" style="background:radial-gradient(circle at 22% 24%,#fff7 0 16px,#ff8fbf 17px 32px,#ff8fbf00 33px),linear-gradient(180deg,#ffd2e5 0 60%,#ffe89a 60% 100%)"></div>
+        <figcaption>ticket stubs + sunshine ★</figcaption>
+      </figure>
+      <div>
+        <p class="hand" style="margin:0 0 8px">Click anywhere on the cork to stick something down:</p>
+        <div class="board" id="board" aria-label="Sticker board. Activate the Stick button to add stickers."></div>
+        <div class="row" style="margin-top:10px">
+          <button class="btn" id="stick" type="button">Stick a star!</button>
+          <button class="btn alt" id="unstick" type="button">Peel them off</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="grid">
+    <section class="panel">
+      <h2>Buttons</h2>
+      <div class="row">
+        <button class="btn">Save page</button>
+        <button class="btn alt">Cancel</button>
+      </div>
+      <div class="row">
+        <button class="btn sm mint">Small</button>
+        <button class="btn sm alt">Small</button>
+        <button class="btn icon" aria-label="Favorite"><i class="ic-heart"></i></button>
+        <button class="btn" disabled>Glued shut</button>
+      </div>
+      <div class="row">
+        <button class="btn alt like" aria-pressed="false"><i class="ic-heart"></i><span class="count">24</span></button>
+        <button class="btn sm blue">Tape it</button>
+        <button class="btn sm pink">Star it</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Text field</h2>
+      <label class="field">Journal caption
+        <input type="text" placeholder="Write it like a diary…">
+      </label>
+      <div class="note"><i class="ic-heart"></i>Sticky notes never cover the thing you need!</div>
+    </section>
+
+    <section class="panel">
+      <h2>Switches</h2>
+      <label class="switch">Glitter effects <input type="checkbox" checked></label>
+      <label class="switch">Show tape lines <input type="checkbox"></label>
+      <label class="switch">Rough edges <input type="checkbox" checked></label>
+    </section>
+
+    <section class="panel">
+      <h2>Chips</h2>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" checked><span>Polaroids</span></label>
+        <label class="chip"><input type="checkbox"><span>Tickets</span></label>
+        <label class="chip"><input type="checkbox" checked><span>Washi</span></label>
+        <label class="chip"><input type="checkbox"><span>Stamps</span></label>
+        <label class="chip"><input type="checkbox"><span>Stickers</span></label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Progress</h2>
+      <div class="bar" role="progressbar" aria-label="Scrapbook progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="55" id="bar"><i></i></div>
+      <label class="field">How full is this page?
+        <input type="range" id="prog" min="0" max="100" value="55">
+      </label>
+      <p class="hand" style="margin:0">55% full, still room for cake. :)</p>
+    </section>
+
+    <section class="panel" id="tabs">
+      <h2>Tabs</h2>
+      <div class="tablist" role="tablist" aria-label="Scrapbook sections">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="t1" id="tb1">Photos</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="t2" id="tb2">Notes</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="t3" id="tb3">Keepsakes</button>
+      </div>
+      <p class="tabpanel" role="tabpanel" id="t1" aria-labelledby="tb1">Polaroids up top, ticket stubs below.</p>
+      <p class="tabpanel" role="tabpanel" id="t2" aria-labelledby="tb2" hidden>Doodles, dates &amp; diary bits.</p>
+      <p class="tabpanel" role="tabpanel" id="t3" aria-labelledby="tb3" hidden>Dried flowers (fake) and fortunes.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Rating</h2>
+      <div class="rate" role="radiogroup" aria-label="How cute is this page?" id="rate">
+        <button role="radio" aria-checked="false" aria-label="1 star"></button>
+        <button role="radio" aria-checked="false" aria-label="2 stars"></button>
+        <button role="radio" aria-checked="false" aria-label="3 stars"></button>
+        <button role="radio" aria-checked="false" aria-label="4 stars"></button>
+        <button role="radio" aria-checked="false" aria-label="5 stars"></button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Accordion</h2>
+      <div id="acc">
+        <details class="acc" open><summary>Will my pages fall apart?</summary><div>Nope.</div></details>
+        <details class="acc"><summary>Can I change the tape?</summary><div>Yep! Edit <code>--tape</code>!</div></details>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Stickers &amp; pals</h2>
+      <div class="stickers">
+        <span class="sticker">yay!</span>
+        <span class="sticker b">xoxo</span>
+        <span class="sticker c">★ keep!</span>
+        <div class="avatars" aria-label="Contributors"><span class="avatar">M</span><span class="avatar">K</span><span class="avatar">+3</span></div>
+      </div>
+      <p class="hand" style="margin:0">signed, sealed, stuck down. ♡</p>
+    </section>
+  </div>
+</main>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+/* sticker board */
+const board=$('#board');
+const words=['★ yay!','xoxo','lol!','♥ cute','wow!','keep!','♪ la!'];
+const fills=['#ffec9e','#ffd2e5','#c7f0dd','#cdeaff','#ddd5ff'];
+function stick(){
+  const s=document.createElement('span');
+  s.className='pin';
+  s.textContent=words[Math.floor(Math.random()*words.length)];
+  s.style.background=fills[Math.floor(Math.random()*fills.length)];
+  s.style.left=(4+Math.random()*68)+'%';
+  s.style.top=(8+Math.random()*68)+'%';
+  s.style.transform='rotate('+(Math.random()*16-8)+'deg)';
+  board.appendChild(s);
+}
+stick();stick();stick();
+$('#stick').onclick=stick;
+$('#unstick').onclick=()=>board.innerHTML='';
+board.addEventListener('click',e=>{if(e.target===board)stick()});
+
+$$('.like').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true',c=b.querySelector('.count');
+ b.setAttribute('aria-pressed',on);c.textContent=+c.textContent+(on?1:-1)});
+
+$('#prog').oninput=e=>{$('#bar').style.setProperty('--v',e.target.value+'%');$('#bar').setAttribute('aria-valuenow',e.target.value)};
+$('#bar').style.setProperty('--v','55%');
+
+$$('#tabs .tab').forEach(t=>t.onclick=()=>{
+ $$('#tabs .tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+ $$('#tabs .tabpanel').forEach(p=>p.hidden=p.id!==t.getAttribute('aria-controls'))});
+
+const stars=$$('#rate button');
+stars.forEach((b,i)=>b.onclick=()=>stars.forEach((x,j)=>{x.classList.toggle('on',j<=i);x.setAttribute('aria-checked',j===i)}));
+</script>
+</body>
+</html>
