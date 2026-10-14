@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marble UI Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <header class="panel"><span class="eyebrow">The Permanent Collection</span><h1>Marble</h1><p>Polished stone, brass placards and quiet galleries. Every surface is veined, every edge is cut.</p></header>
+  <div class="grid">
+    <section class="panel"><h2>Placards</h2>
+      <div class="row"><button class="btn">Acquire</button><button class="btn alt">Cancel</button></div>
+      <div class="row"><button class="btn sm">Small</button><button class="btn sm alt">Small</button><button class="btn alt icon" aria-label="Favorite"><i class="ic-heart"></i></button><button class="btn alt" disabled>Disabled</button></div>
+      <div class="row"><button class="btn alt like" aria-pressed="false"><i class="ic-heart"></i><span class="count">24</span></button><button class="btn alt" id="toast">Hang a label</button></div>
+    </section>
+    <section class="panel"><h2>Visitor book</h2>
+      <label class="field">Your name<input type="text" placeholder="Sign here"></label>
+      <div class="note"><i class="ic-heart"></i>Slabs are raised, fields are carved in.</div>
+    </section>
+    <section class="panel"><h2>Lighting</h2>
+      <label class="switch">Gallery lights <input type="checkbox" checked></label>
+      <label class="switch">Spotlights <input type="checkbox"></label>
+    </section>
+    <section class="panel"><h2>Catalogue tags</h2>
+      <div class="chips"><label class="chip"><input type="checkbox" checked><span>Carrara</span></label><label class="chip"><input type="checkbox"><span>Calacatta</span></label><label class="chip"><input type="checkbox" checked><span>Nero</span></label></div>
+    </section>
+    <section class="panel"><h2>Restoration</h2>
+      <div class="bar" id="bar" role="progressbar" aria-label="Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"><i></i></div>
+      <label class="field">Drag to change<input type="range" id="prog" min="0" max="100" value="60"></label>
+    </section>
+    <section class="panel" id="tabs"><h2>Wings</h2>
+      <div class="tablist" role="tablist">
+        <button class="tab btn alt" role="tab" aria-selected="true" aria-controls="t1">One</button>
+        <button class="tab btn alt" role="tab" aria-selected="false" aria-controls="t2">Two</button>
+        <button class="tab btn alt" role="tab" aria-selected="false" aria-controls="t3">Three</button>
+      </div>
+      <p class="tabpanel" role="tabpanel" id="t1">Antiquities, a quiet room of busts and columns.</p>
+      <p class="tabpanel" role="tabpanel" id="t2" hidden>Renaissance, warm light and gilt frames.</p>
+      <p class="tabpanel" role="tabpanel" id="t3" hidden>Modern, one white wall and one object.</p>
+    </section>
+    <section class="panel"><h2>Curator notes</h2>
+      <div id="acc"><details class="acc" open><summary>Is it a photograph?</summary><div>No. The veining is generated live, so it never repeats the same way twice at any size.</div></details><details class="acc"><summary>Where does the weight come from?</summary><div>A pale chamfer on top, a dark lip below, and a long soft shadow.</div></details></div>
+    </section>
+  </div>
+</main>
+<div id="toasts" aria-live="polite"></div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$$('.like').forEach(b=>b.onclick=()=>{const on=b.getAttribute('aria-pressed')!=='true',c=b.querySelector('.count');b.setAttribute('aria-pressed',on);c.textContent=+c.textContent+(on?1:-1)});
+$('#prog').oninput=e=>{$('#bar').style.setProperty('--v',e.target.value+'%');$('#bar').setAttribute('aria-valuenow',e.target.value)};
+$('#bar').style.setProperty('--v','60%');
+$$('#tabs .tab').forEach(t=>t.onclick=()=>{$$('#tabs .tab').forEach(x=>x.setAttribute('aria-selected',x===t));$$('#tabs .tabpanel').forEach(p=>p.hidden=p.id!==t.getAttribute('aria-controls'))});
+let n=0;$('#toast').onclick=()=>{const box=$('#toasts');while(box.children.length>=5)box.firstChild.remove();
+ const t=document.createElement('div');t.className='toast';t.innerHTML='<span>Added to collection</span><b>ON</b>';box.append(t);
+ setTimeout(()=>{t.classList.add('out');setTimeout(()=>t.remove(),180)},1800)};
+</script>
+</body>
+</html>

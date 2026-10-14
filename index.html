@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>UI Kits</title>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Sniglet:wght@800&family=Patrick+Hand&family=Shrikhand&family=Caveat:wght@600;700&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Sniglet:wght@800&family=Patrick+Hand&family=Shrikhand&family=Caveat:wght@600;700&family=Nunito:wght@600;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
 <style>
 :root{--heart:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 40'%3E%3Cpath d='M22 38C6 26 1 18 1 11 1 5 6 1 11 1c5 0 9 3 11 7 2-4 6-7 11-7 5 0 10 4 10 10 0 7-5 15-21 27z'/%3E%3C/svg%3E");
  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -184,6 +184,49 @@ html[data-skin=glass] .chip input:checked+span{background:linear-gradient(to bot
 html[data-skin=glass] .bar{height:22px;padding:4px}
 html[data-skin=glass] .bar i{background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent 50%),linear-gradient(90deg,#8b4a5a,var(--ac));box-shadow:0 0 10px rgb(199 123 135/.5)}
 html[data-skin=glass] pre{background:linear-gradient(to bottom,var(--hi),transparent 10px),var(--tint)}
+html[data-skin=marble]{--stone:#e9e7e2;--slab:#f6f5f1;--ink:#2a2826;--soft:#6d6a64;--brass:#a8843f;--brass-hi:#d9bb73;--brass-lo:#7a5c26;
+ --hi:rgba(255,255,255,.9);--lo:rgba(60,52,44,.16);--line:rgba(70,62,54,.22);--cast:rgba(46,38,30,.38);--groove:rgba(60,52,44,.16);--plate-ink:#2b2011;
+ --dp:var(--brass);--bg:var(--stone);--vein-page:url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%271200%27%20height=%271200%27%3E%3Cfilter%20id=%27f%27%20x=%270%27%20y=%270%27%20width=%27100%25%27%20height=%27100%25%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%27.0022%20.0042%27%20numOctaves=%276%27%20seed=%2711%27%20stitchTiles=%27stitch%27/%3E%3CfeColorMatrix%20type=%27matrix%27%20values=%270%200%200%200%200.4%200%200%200%200%200.42%200%200%200%200%200.46%201%200%200%200%200%27/%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type=%27table%27%20tableValues=%270%200%200%200%200%200%200%200%200%200.25%200.55%200.25%200%200%200%200%200%200%200%200%200%27/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width=%271200%27%20height=%271200%27%20filter=%27url%28%23f%29%27/%3E%3C/svg%3E");--vein-fine:url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%27800%27%20height=%27800%27%3E%3Cfilter%20id=%27f%27%20x=%270%27%20y=%270%27%20width=%27100%25%27%20height=%27100%25%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%27.0035%20.0065%27%20numOctaves=%276%27%20seed=%2723%27%20stitchTiles=%27stitch%27/%3E%3CfeColorMatrix%20type=%27matrix%27%20values=%270%200%200%200%200.5%200%200%200%200%200.5%200%200%200%200%200.52%201%200%200%200%200%27/%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type=%27table%27%20tableValues=%270%200%200%200%200%200%200%200%200%200.14%200.3%200.14%200%200%200%200%200%200%200%200%200%27/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width=%27800%27%20height=%27800%27%20filter=%27url%28%23f%29%27/%3E%3C/svg%3E");--wall:radial-gradient(90% 60% at 20% 0,#fff 0,transparent 70%),radial-gradient(80% 50% at 100% 100%,rgba(190,184,172,.55) 0,transparent 70%);--serif:"Cormorant Garamond","Cormorant",Garamond,"Hoefler Text","Iowan Old Style",Georgia,serif;--r:2px;--rb:8px}
+@media (prefers-color-scheme:dark){html[data-skin=marble]:not([data-theme=light]){--stone:#141313;--slab:#1c1a19;--ink:#ece5d6;--soft:#a39b8b;--brass:#c9a45c;--brass-hi:#ecd18f;--brass-lo:#8a6a2c;
+ --hi:rgba(255,240,205,.14);--lo:rgba(0,0,0,.6);--line:rgba(201,164,92,.38);--cast:rgba(0,0,0,.7);--groove:rgba(0,0,0,.55);--plate-ink:#241a0a;
+ --vein-page:url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%271200%27%20height=%271200%27%3E%3Cfilter%20id=%27f%27%20x=%270%27%20y=%270%27%20width=%27100%25%27%20height=%27100%25%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%27.0022%20.0042%27%20numOctaves=%276%27%20seed=%2711%27%20stitchTiles=%27stitch%27/%3E%3CfeColorMatrix%20type=%27matrix%27%20values=%270%200%200%200%200.86%200%200%200%200%200.68%200%200%200%200%200.36%201%200%200%200%200%27/%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type=%27table%27%20tableValues=%270%200%200%200%200%200%200%200%200%200.23%200.5%200.23%200%200%200%200%200%200%200%200%200%27/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width=%271200%27%20height=%271200%27%20filter=%27url%28%23f%29%27/%3E%3C/svg%3E");--vein-fine:url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%27800%27%20height=%27800%27%3E%3Cfilter%20id=%27f%27%20x=%270%27%20y=%270%27%20width=%27100%25%27%20height=%27100%25%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%27.0035%20.0065%27%20numOctaves=%276%27%20seed=%2723%27%20stitchTiles=%27stitch%27/%3E%3CfeColorMatrix%20type=%27matrix%27%20values=%270%200%200%200%200.9%200%200%200%200%200.8%200%200%200%200%200.55%201%200%200%200%200%27/%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type=%27table%27%20tableValues=%270%200%200%200%200%200%200%200%200%200.07%200.16%200.07%200%200%200%200%200%200%200%200%200%27/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width=%27800%27%20height=%27800%27%20filter=%27url%28%23f%29%27/%3E%3C/svg%3E");--wall:radial-gradient(90% 60% at 20% 0,rgba(255,235,190,.1) 0,transparent 70%),radial-gradient(80% 50% at 100% 100%,rgba(0,0,0,.5) 0,transparent 70%);}}
+html[data-theme=dark][data-skin=marble]{--stone:#141313;--slab:#1c1a19;--ink:#ece5d6;--soft:#a39b8b;--brass:#c9a45c;--brass-hi:#ecd18f;--brass-lo:#8a6a2c;
+ --hi:rgba(255,240,205,.14);--lo:rgba(0,0,0,.6);--line:rgba(201,164,92,.38);--cast:rgba(0,0,0,.7);--groove:rgba(0,0,0,.55);--plate-ink:#241a0a;
+ --vein-page:url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%271200%27%20height=%271200%27%3E%3Cfilter%20id=%27f%27%20x=%270%27%20y=%270%27%20width=%27100%25%27%20height=%27100%25%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%27.0022%20.0042%27%20numOctaves=%276%27%20seed=%2711%27%20stitchTiles=%27stitch%27/%3E%3CfeColorMatrix%20type=%27matrix%27%20values=%270%200%200%200%200.86%200%200%200%200%200.68%200%200%200%200%200.36%201%200%200%200%200%27/%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type=%27table%27%20tableValues=%270%200%200%200%200%200%200%200%200%200.23%200.5%200.23%200%200%200%200%200%200%200%200%200%27/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width=%271200%27%20height=%271200%27%20filter=%27url%28%23f%29%27/%3E%3C/svg%3E");--vein-fine:url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%27800%27%20height=%27800%27%3E%3Cfilter%20id=%27f%27%20x=%270%27%20y=%270%27%20width=%27100%25%27%20height=%27100%25%27%3E%3CfeTurbulence%20type=%27fractalNoise%27%20baseFrequency=%27.0035%20.0065%27%20numOctaves=%276%27%20seed=%2723%27%20stitchTiles=%27stitch%27/%3E%3CfeColorMatrix%20type=%27matrix%27%20values=%270%200%200%200%200.9%200%200%200%200%200.8%200%200%200%200%200.55%201%200%200%200%200%27/%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type=%27table%27%20tableValues=%270%200%200%200%200%200%200%200%200%200.07%200.16%200.07%200%200%200%200%200%200%200%200%200%27/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect%20width=%27800%27%20height=%27800%27%20filter=%27url%28%23f%29%27/%3E%3C/svg%3E");--wall:radial-gradient(90% 60% at 20% 0,rgba(255,235,190,.1) 0,transparent 70%),radial-gradient(80% 50% at 100% 100%,rgba(0,0,0,.5) 0,transparent 70%);}
+html[data-skin=marble] body{font:500 1.12rem/1.55 var(--serif);letter-spacing:.015em;background:var(--wall) fixed,var(--vein-page) fixed,var(--stone)}
+html[data-skin=marble] :is(h1,h2,h3,.brand){font-family:var(--serif);font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+html[data-skin=marble] h1{font-size:clamp(2.6rem,7vw,4rem);line-height:1;font-weight:400;letter-spacing:.08em}
+html[data-skin=marble] h2{font-size:.95rem;letter-spacing:.26em;font-weight:700;color:var(--soft)}
+html[data-skin=marble] h3{font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;color:var(--soft)}
+html[data-skin=marble] .lede{font-style:italic;color:var(--soft);font-size:1.2rem}
+html[data-skin=marble] .brand{letter-spacing:.18em}
+html[data-skin=marble] :focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+html[data-skin=marble] .panel,html[data-skin=marble] pre{position:relative;border-radius:var(--r);
+ background:var(--vein-fine),linear-gradient(155deg,var(--hi),transparent 38%),var(--slab);
+ box-shadow:inset 0 1px 0 var(--hi),inset 0 -1px 0 var(--lo),0 0 0 1px var(--line),0 18px 32px -18px var(--cast),0 2px 4px -1px rgba(0,0,0,.12)}
+html[data-skin=marble] .panel{text-shadow:0 1px 0 var(--hi)}
+html[data-skin=marble] .panel::before{content:"";position:absolute;inset:6px;border:1px solid var(--line);border-radius:1px;pointer-events:none;opacity:.7}
+html[data-skin=marble] .btn{font:inherit;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.84rem;color:var(--ink);padding:13px 24px;cursor:pointer;border:0;border-radius:var(--rb);transition:transform .12s,filter .15s,box-shadow .15s}
+html[data-skin=marble] .btn:not(.alt){color:var(--plate-ink);text-shadow:0 1px 0 rgba(255,236,190,.55);
+ background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent 45%,rgba(0,0,0,.14)),linear-gradient(100deg,var(--brass-lo),var(--brass) 30%,var(--brass-hi) 55%,var(--brass) 78%,var(--brass-lo));
+ box-shadow:inset 0 1px 0 rgba(255,246,214,.7),inset 0 -1px 0 rgba(60,40,8,.5),0 0 0 1px var(--brass-lo),0 8px 14px -8px var(--cast)}
+html[data-skin=marble] .btn.alt{background:linear-gradient(to bottom,var(--hi),transparent 60%),var(--slab);box-shadow:inset 0 1px 0 var(--hi),inset 0 -1px 0 var(--lo),0 0 0 1px var(--line),0 6px 10px -8px var(--cast)}
+html[data-skin=marble] .btn.alt[aria-checked=true]{color:var(--plate-ink);text-shadow:0 1px 0 rgba(255,236,190,.5);background:linear-gradient(100deg,var(--brass-lo),var(--brass) 40%,var(--brass-hi) 60%,var(--brass));box-shadow:inset 0 1px 0 rgba(255,246,214,.6),0 0 0 1px var(--brass-lo)}
+html[data-skin=marble] .btn:hover:not(:disabled){filter:brightness(1.06);transform:translateY(-1px)}
+html[data-skin=marble] .btn:active:not(:disabled){transform:translateY(1px);filter:brightness(.94)}
+html[data-skin=marble] .like .ic{opacity:.3}
+html[data-skin=marble] .like[aria-pressed=true] .ic{opacity:1;color:var(--brass)}
+html[data-skin=marble] .sw input{width:56px;height:28px;border-radius:99px;background:var(--stone);box-shadow:inset 0 2px 5px var(--groove),inset 0 -1px 0 var(--hi),0 0 0 1px var(--line)}
+html[data-skin=marble] .sw input::after{top:3px;left:3px;width:22px;height:22px;background:radial-gradient(circle at 35% 30%,#fff,var(--slab) 55%,#cfcac0);box-shadow:0 1px 3px var(--cast),0 0 0 1px var(--line)}
+html[data-skin=marble] .sw input:checked::after{transform:translateX(28px);background:radial-gradient(circle at 35% 30%,var(--brass-hi),var(--brass) 60%,var(--brass-lo))}
+html[data-skin=marble] .chip span,html[data-skin=marble] .pill{background:var(--slab);box-shadow:inset 0 1px 0 var(--hi),0 0 0 1px var(--line);text-shadow:0 1px 0 var(--hi)}
+html[data-skin=marble] .chip input:checked+span{color:var(--plate-ink);text-shadow:0 1px 0 rgba(255,236,190,.5);background:linear-gradient(100deg,var(--brass-lo),var(--brass) 40%,var(--brass-hi) 60%,var(--brass));box-shadow:inset 0 1px 0 rgba(255,246,214,.6),0 0 0 1px var(--brass-lo)}
+html[data-skin=marble] .bar{height:20px;padding:4px;border-radius:99px;background:var(--stone);box-shadow:inset 0 2px 5px var(--groove),inset 0 -1px 0 var(--hi),0 0 0 1px var(--line)}
+html[data-skin=marble] .bar i{background:linear-gradient(to bottom,rgba(255,255,255,.45),transparent 55%),linear-gradient(90deg,var(--brass-lo),var(--brass) 50%,var(--brass-hi));box-shadow:0 0 0 1px var(--brass-lo)}
+html[data-skin=marble] .chip input:focus-visible+span{outline:2px solid var(--brass);outline-offset:3px}
+html[data-skin=marble] input[type=range]{accent-color:var(--brass)}
+html[data-skin=marble] pre{text-shadow:0 1px 0 var(--hi)}
+
 </style>
 </head>
 <body>
@@ -191,7 +234,7 @@ html[data-skin=glass] pre{background:linear-gradient(to bottom,var(--hi),transpa
 <div class="wrap">
   <header class="top">
     <a class="brand" href="#">Auraea</a>
-    <nav aria-label="Main"><a href="pink-picnic/">Pink Picnic</a><a href="neumorphic/">Neumorphic</a><a href="doodle/">Doodle</a><a href="scrapbook/">Scrapbook</a><a href="glass/">Glass</a><a href="#sites">Full sites</a></nav>
+    <nav aria-label="Main"><a href="pink-picnic/">Pink Picnic</a><a href="neumorphic/">Neumorphic</a><a href="doodle/">Doodle</a><a href="scrapbook/">Scrapbook</a><a href="glass/">Glass</a><a href="marble/">Marble</a><a href="#sites">Full sites</a></nav>
   </header>
 
   <div class="hero">
@@ -209,6 +252,7 @@ html[data-skin=glass] pre{background:linear-gradient(to bottom,var(--hi),transpa
         <button class="btn alt" role="radio" aria-checked="false" data-skin="neu">Neumorphic</button>
         <button class="btn alt" role="radio" aria-checked="false" data-skin="doodle">Doodle</button>
         <button class="btn alt" role="radio" aria-checked="false" data-skin="scrapbook">Scrapbook</button>
+        <button class="btn alt" role="radio" aria-checked="false" data-skin="marble">Marble</button>
         <!-- the glass button is removed, but its logic is not. This is intentional -->
       </div>
       <div class="row">
@@ -250,6 +294,12 @@ html[data-skin=glass] pre{background:linear-gradient(to bottom,var(--hi),transpa
         <p>Taped paper cards, washi strips, sticker buttons and rainbow stars.</p>
         <div class="row"><button class="btn alt" data-skin="scrapbook">Preview this skin</button><a class="btn alt" href="scrapbook/" style="text-decoration:none">Open full page</a></div>
       </div>
+      <div class="panel">
+        <h3>Marble</h3>
+        <p>Polished stone, brass placards and quiet galleries. Every surface is veined, every edge is cut.</p>
+        <div class="row"><button class="btn alt" data-skin="marble">Preview this skin</button><a class="btn alt" href="marble/" style="text-decoration:none">Open full page</a></div>
+      </div>
+    </div>
   </section>
 
   <section class="blk" id="sites">
